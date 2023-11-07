@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableNativeFeedback } from 'react-native'
 import React from 'react'
 
 interface Props { //Properties of my FAB
@@ -10,17 +10,23 @@ interface Props { //Properties of my FAB
 // export const Fab = ( props: Props ) => {
 export const Fab = ( {title, onPress, position = 'br' }: Props ) => {
   return (
-    <TouchableOpacity
-      onPress={ onPress }
+    <View
       style={ [
         styles.fabLocation,
         (position === 'bl') ? styles.left : styles.right,
       ] }
     >
+      <TouchableNativeFeedback
+        onPress={ onPress }
+        background={TouchableNativeFeedback.Ripple('#28425B', false, 30)}
+      >
       <View style={ styles.fab }>
         <Text style={ styles.fabText}>{title}</Text>
       </View>
-    </TouchableOpacity>
+    </TouchableNativeFeedback>
+
+    </View>
+    
   )
 }
 
