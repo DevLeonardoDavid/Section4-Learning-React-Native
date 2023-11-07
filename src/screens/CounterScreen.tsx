@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { Fab } from '../components/components';
 
 export const CounterScreen = () => {
 
@@ -12,23 +13,16 @@ export const CounterScreen = () => {
         Counter: { counter }
       </Text>
 
-      <TouchableOpacity
-        onPress={ () => setCounter( counter + 1)}
-        style={ styles.fabLocationBR }
-      >
-        <View style={ styles.fab }>
-          <Text style={ styles.fabText}>+1</Text>
-        </View>
-      </TouchableOpacity>
+      <Fab 
+        title='+1'
+        onPress={ () => setCounter( counter + 1) }
+      />
 
-      <TouchableOpacity
-        onPress={ () => setCounter( counter - 1)}
-        style={ styles.fabLocationBL }
-      >
-        <View style={ styles.fab }>
-          <Text style={ styles.fabText}>-1</Text>
-        </View>
-      </TouchableOpacity>
+      <Fab 
+        title='-1'
+        position='bl'
+        onPress={ () => setCounter( counter - 1) }
+      />
 
     </View>
   )
@@ -46,27 +40,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     top: -15,
   },
-  fabLocationBR: {//Bottom Right
-    position: 'absolute', //Fijo en la posición inicial donde se creó
-    bottom: 25, //Basado en el padre, ponlo al final
-    right: 25,
-  },
-  fabLocationBL: {//Bottom Right
-    position: 'absolute', 
-    bottom: 25,
-    left: 25,
-  },
-  fab: { //FloatingActionButton
-    backgroundColor: '#5856D6',
-    width: 60,
-    height: 60,
-    borderRadius: 100,
-    justifyContent: 'center',
-  },
-  fabText: {
-    color: 'white',
-    fontSize: 25,
-    fontWeight: 'bold',
-    alignSelf: 'center',
-  }
+  
 });
